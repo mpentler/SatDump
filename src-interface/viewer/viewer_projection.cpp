@@ -152,6 +152,21 @@ namespace satdump
                     ImGui::SetTooltip("No layers loaded!");
             }
 
+            ImGui::SameLine();
+            if (ImGui::Button("Save All Layers"))
+            {
+                logger->info("Exporting all layers as indvidual images");
+            }
+            if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled))
+            {
+                if (projections_are_generating)
+                    ImGui::SetTooltip("Generating, please wait...");
+                if (projection_layers.size() == 0)
+                    ImGui::SetTooltip("No layers loaded!");
+                if (active_layers == 0)
+                    ImGui::SetTooltip("No layers active for projection!");
+            }
+
             ImGui::Spacing();
 
             if (ImGui::Button("Save Projected Image"))
